@@ -1,5 +1,6 @@
 import tweepy
 import os
+import requests
 
 
 def print_timeline():
@@ -13,9 +14,18 @@ def print_timeline():
 
     api = tweepy.API(auth)
 
-    public_tweets = api.home_timeline()
-    for tweet in public_tweets:
-        print(tweet.text)
+    tweets = api.search("画像")
+    for tweet in tqdm(tweets):
+        if 'media' in tweet.entities:
+            for media in tweet.entities['media']:
+                media_url = media['media_url']
+                filename = f"images/{media_url.split('/')[-1]}"
+                with open(filename, 'wb') as fp:
+                    img_data = requests.get(media_url).content
+                    fp.write(img_data)
+        else:
+            print('skip')
+        print('-' * 30)
 
 
 if __name__ == '__main__':

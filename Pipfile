@@ -12,3 +12,10 @@ name = "pypi"
 [packages]
 
 tweepy = "*"
+requests = "*"
+tqdm = "*"
+
+
+[requires]
+
+python_version = "3.6"
