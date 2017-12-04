@@ -1,6 +1,7 @@
 import tweepy
 import os
 import requests
+import tqdm
 
 
 def print_timeline():
