@@ -109,3 +109,4 @@ qiita_items/
 *.npy
 *.txt
 user_dict/
+images/
