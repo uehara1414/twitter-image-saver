@@ -1,7 +1,7 @@
 import tweepy
 import os
 import requests
-import tqdm
+from tqdm import tqdm
 
 
 def print_timeline():
@@ -24,9 +24,6 @@ def print_timeline():
                 with open(filename, 'wb') as fp:
                     img_data = requests.get(media_url).content
                     fp.write(img_data)
-        else:
-            print('skip')
-        print('-' * 30)
 
 
 if __name__ == '__main__':
